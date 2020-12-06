@@ -13,7 +13,6 @@ type
     phys: real;
     prog: real;
     ob: string;
-    razd:char;
   end;
   aa = array[1..N] of students;
   bb = array[1..N] of real;
@@ -22,24 +21,43 @@ var
   list, good, bad: aa;
   x: students;
   sr: bb;
-  i, k, l, g, b: integer;
+  i,j, k, l, g, b,r: integer;
+  s,d:string;
 
 begin
   g := 1;
   b := 1;
-  for i := 1 to N do 
-  begin
-    readln(list[i].surname);
-    readln(list[i].name);
-    readln(list[i].midname);
-    readln(list[i].year);
-    readln(list[i].number);
-    readln(list[i].math);
-    readln(list[i].phys);
-    readln(list[i].prog);
-    readln(list[i].ob);
-    readln(list[i].razd);
-  end;  
+  readln(s);
+  for j := 1 to N do begin
+    i:=1;
+    while s[i]<>',' do begin list[j].surname :=list[j].surname+s[i]; i:=i+1; end;
+    i:=i+1;
+    while s[i]<>',' do begin list[j].name :=list[j].name+s[i]; i:=i+1; end;
+    i:=i+1;
+    while s[i]<>',' do begin list[j].midname :=list[j].midname+s[i]; i:=i+1; end;
+    i:=i+1;
+    while s[i]<>',' do begin d :=d+s[i]; i:=i+1; end;
+    val(d,list[j].year,r);
+    delete(d,1,length(d));
+    i:=i+1;
+    while s[i]<>',' do begin list[j].number :=list[j].number+s[i]; i:=i+1; end;
+    i:=i+1;
+    while s[i]<>',' do begin d :=d+s[i]; i:=i+1; end;
+    val(d,list[j].math,r);
+    delete(d,1,length(d));
+    i:=i+1;
+    while s[i]<>',' do begin d :=d+s[i]; i:=i+1; end;
+    val(d,list[j].phys,r);
+    delete(d,1,length(d));
+    i:=i+1;
+    while s[i]<>',' do begin d :=d+s[i]; i:=i+1; end;
+    val(d,list[j].prog,r);
+    delete(d,1,length(d));
+    i:=i+1;
+    while s[i]<>';' do begin list[j].ob :=list[j].ob+s[i]; i:=i+1; end;
+    delete(s,1,i);
+ 
+ end;
   for i := 1 to N do
   begin
     if (list[i].math = 5) and (list[i].phys = 5) and (list[i].prog = 5) then
